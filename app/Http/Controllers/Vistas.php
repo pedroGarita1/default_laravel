@@ -11,7 +11,10 @@ class Vistas extends Controller
 {
     public function __construct()
     {
-        
+        $this->middleware(['guest'])->only(['index']);
+        $this->middleware(['guest'])->only(['index_auth']);
+        $this->middleware(['auth'])->only(['index_manager']);
+        $this->middleware(['auth'])->only(['view_create']);
     }
     public function index(){
         $titulo = 'Inicio';
